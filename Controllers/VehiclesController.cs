@@ -67,4 +67,18 @@ public class VehiclesController : ControllerBase
             return BadRequest(error.Message);
         }
     }
+    [HttpPut("{vehicleId}")]
+    public ActionResult<Vehicle> EditVehicle(int vehicleId, [FromBody] Vehicle vehicleData)
+    {
+        try
+        {
+            Vehicle vehicle = _vehiclesService.EditVehicle(vehicleData, vehicleId);
+            return Ok(vehicle);
+        }
+        catch (Exception error)
+        {
+
+            return BadRequest(error.Message);
+        }
+    }
 }

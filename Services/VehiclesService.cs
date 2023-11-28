@@ -2,6 +2,7 @@
 
 
 
+
 namespace vehicleChart.Services;
 public class VehiclesService
 {
@@ -22,6 +23,16 @@ public class VehiclesService
         Vehicle vehicle = GetVehicleById(vehicleId);
         _vehiclesRepository.DestroyVehicle(vehicle);
         return "this vehicle has been taken off the lot!";
+    }
+
+    internal Vehicle EditVehicle(Vehicle vehicleData, int vehicleId)
+    {
+        Vehicle vehicle = GetVehicleById(vehicleId);
+        vehicle.Make = vehicleData.Make;
+        vehicle.DoesRun = vehicleData.DoesRun;
+        vehicle.Color = vehicleData.Color;
+        vehicle.Model = vehicleData.Model;
+        return vehicle;
     }
 
     internal Vehicle GetVehicleById(int vehicleId)
